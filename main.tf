@@ -3,9 +3,7 @@ resource "helm_release" "test" {
   repository = "https://charts.jenkins.io"
   chart      = "jenkins"
 
-  set {
-    name  = "master.serviceType"
-    value = "LoadBalancer"
-  }
+  values = [
+    "${file("values.yaml")}"
+  ]
 }
-
